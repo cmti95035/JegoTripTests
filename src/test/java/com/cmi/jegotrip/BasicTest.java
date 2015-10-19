@@ -7,14 +7,12 @@ import org.json.simple.parser.JSONParser;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.FileReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +38,7 @@ public class BasicTest {
         }
 
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        skipSplashIfPresent();
     }
 
     /*
@@ -132,9 +131,6 @@ public class BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.EditText[1]").sendKeys("123456");
 
-
-
-
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
@@ -143,6 +139,17 @@ public class BasicTest {
                 ".widget.TextView[2]").click();
 
         TestCase.assertNotNull(wd.findElementByName("用户名"));
+    }
+
+    private void skipSplashIfPresent() {
+        WebElement el = wd.findElement(By.xpath("//android.widget" +
+                ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
+                ".widget.LinearLayout[1]/android.widget" +
+                ".FrameLayout[1]/android.widget.RelativeLayout[1]/android" +
+                ".widget.TextView[1]"));
+        if (el != null) {
+            el.click();
+        }
     }
 }
 
