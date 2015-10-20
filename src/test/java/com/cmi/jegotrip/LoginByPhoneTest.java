@@ -3,8 +3,6 @@ package com.cmi.jegotrip;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import io.appium.java_client.AppiumDriver;
-
 import static junit.framework.TestCase.assertNotNull;
 
 /*
@@ -30,12 +28,12 @@ public class LoginByPhoneTest extends BasicTest {
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
-                ".FrameLayout[1]/android.widget.FrameLayout[1]/android" +
-                ".widget.LinearLayout[1]/android.widget" +
+                ".FrameLayout[1]/android.widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.FrameLayout[1]/android.widget.ListView[1]/android" +
-                ".widget.FrameLayout[1]/android.widget.LinearLayout[1]")
-                .click();
+                ".widget.FrameLayout[1]/android.widget" +
+                ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
+                ".widget.ListView[1]/android.widget.FrameLayout[1]/android" +
+                ".widget.ImageView[1]").click();
 
         findByName("立即购买").click();
         findByName("马上登录").click();
