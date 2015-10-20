@@ -39,6 +39,7 @@ public class BasicTest {
 
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         skipSplashIfPresent();
+        //skipUpgradeIfPresent();
     }
 
     /*
@@ -130,6 +131,7 @@ public class BasicTest {
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.EditText[1]").sendKeys("123456");
+        wd.hideKeyboard();
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -142,14 +144,34 @@ public class BasicTest {
     }
 
     private void skipSplashIfPresent() {
-        WebElement el = wd.findElement(By.xpath("//android.widget" +
+        WebElement el = find("//android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".FrameLayout[1]/android.widget.RelativeLayout[1]/android" +
-                ".widget.TextView[1]"));
+                ".widget.TextView[1]");
         if (el != null) {
             el.click();
         }
+    }
+
+    //If upgrade dialog is not present, UiAnimator will shutdown
+    // So it works for upgrade case, but not work for normal case
+    // Need further tuning
+    private void skipUpgradeIfPresent() {
+        WebElement el = null;
+
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        try {
+            el =  wd.findElement(By.xpath("//android.widget.FrameLayout[1]/android" +
+                            ".widget.FrameLayout[1]/android.widget" +
+                            ".LinearLayout[1]/android.widget.LinearLayout[2]/android" +
+                            ".widget.Button[1]"));
+        } finally {
+            if (el != null) {
+                el.click();
+            }
+        }
+        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 }
 

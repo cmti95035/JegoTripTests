@@ -112,7 +112,14 @@ public class SearchDestinationTest extends BasicTest {
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".FrameLayout[1]/android.widget.ListView[1]/android.widget" +
-                ".LinearLayout[1]/android.widget.TextView[1]").click();
+                ".LinearLayout[1]/android.widget.LinearLayout[1]").click();
+
+        /*wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android" +
+                ".widget.FrameLayout[1]/android.widget" +
+                ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
+                ".widget.LinearLayout[1]/android.widget" +
+                ".FrameLayout[1]/android.widget.ListView[1]/android.widget" +
+                ".LinearLayout[1]/android.widget.LinearLayout[1]")).click();*/
     }
 
     /**
