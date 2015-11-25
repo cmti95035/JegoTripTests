@@ -21,8 +21,23 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class BasicTest {
     protected AppiumDriver wd;
+
     protected static String PHONE_NUMBER;
+    protected static String PHONE_NUMBER_MAL_FORMED;
+    protected static String PHONE_NUMBER_UNREGISTERED;
+
     protected static String PASSWORD;
+    protected static String PASSWORD_MAL_FORMED;
+    protected static String PASSWORD_WRONG;
+
+    protected static String USER_ID;
+    protected static String USER_ID_WRONG;
+
+    protected static String EMAIL;
+    protected static String EMAIL_MAL_FORMED;
+    protected static String EMAIL_UNREGISTERED;
+
+    protected static String REGISTER_CODE;
 
     @Before
     public void setUp() {
@@ -45,15 +60,26 @@ public class BasicTest {
     /*
      * Setup the test device and package
      * Create your own device or emulator device.json file
-     * Please don't check in your device.json file
+     * to overwrite the default one.
+     * Please don't check in your device.json file.
      * Here is a sample device.json file:
-     *  {
-     *       "deviceName":"VS9804G9f168b75",
-     *       "platformVersion":"5.0",
-     *       "app":"/Users/charlie/Downloads/jegotrip.apk",
-     *       "user":"13636477219",
-     *       "password":"123789"
-     *  }
+    {
+       "deviceName":"VS9804G9f168b75",
+        "platformVersion":"5.0",
+        "app":"/Users/charlie/Downloads/jegotrip.apk",
+        "phone":"18801496855",
+        "password":"123456",
+        "mal_formed_phone":"188014968",
+        "unregistered_phone":"13705715745",
+        "mal_formed_password":"12345",
+        "wrong_password":"123457",
+        "user_id":"charlie",
+        "wrong_user_id":"charles",
+        "email":"charliehan@chinamobile.com",
+        "mal_formed_email":"charliehan#chinamobile.com",
+        "unregistered_email":"charliehan@gmail.com",
+        "register_code":"GZH"
+    }
      *
      */
 
@@ -79,15 +105,34 @@ public class BasicTest {
             capabilities) {
         for (String k : ((Set<String>) prof.keySet())) {
             String v = (String) prof.get(k);
-            if (null != v && v.length() > 0) {
-                if (k.equals("user")) {
-                    PHONE_NUMBER = v;
-                } else if (k.equals("password")) {
-                    PASSWORD = v;
-                } else {
-                    capabilities.setCapability(k, v);
+                switch(k) {
+                    case "phone": PHONE_NUMBER = v;
+                        break;
+                    case "password": PASSWORD = v;
+                        break;
+                    case "mal_formed_phone": PHONE_NUMBER_MAL_FORMED = v;
+                        break;
+                    case "unregistered_phone": PHONE_NUMBER_UNREGISTERED = v;
+                        break;
+                    case "mal_formed_password": PASSWORD_MAL_FORMED = v;
+                        break;
+                    case "wrong_password": PASSWORD_WRONG = v;
+                        break;
+                    case "user_id": USER_ID = v;
+                        break;
+                    case "wrong_user_id": USER_ID_WRONG = v;
+                        break;
+                    case "email": EMAIL = v;
+                        break;
+                    case "mal_formed_email": EMAIL_MAL_FORMED = v;
+                        break;
+                    case "unregistered_email": EMAIL_UNREGISTERED = v;
+                        break;
+                    case "register_code": REGISTER_CODE = v;
+                        break;
+                    default: capabilities.setCapability(k, v);
+                        break;
                 }
-            }
         }
     }
 
@@ -101,6 +146,14 @@ public class BasicTest {
 
     protected WebElement findByName(String name) {
         return wd.findElementByName(name);
+    }
+
+    protected void hideKeyboard(String caller) {
+        try {
+            wd.hideKeyboard();
+        } catch(Exception e) {
+            System.out.println("Soft keyboard is not present in " + caller);
+        }
     }
 
     @After
@@ -123,15 +176,15 @@ public class BasicTest {
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.RelativeLayout[2]/android.widget.EditText[1]")
-                .sendKeys("18801496855");
+                .sendKeys(PHONE_NUMBER);
 
         //输入正确密码
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.EditText[1]").sendKeys("123456");
-        wd.hideKeyboard();
+                ".widget.EditText[1]").sendKeys(PASSWORD);
+        hideKeyboard("loginByPhone");
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -154,9 +207,11 @@ public class BasicTest {
         }
     }
 
-    //If upgrade dialog is not present, UiAnimator will shutdown
-    // So it works for upgrade case, but not work for normal case
-    // Need further tuning
+    /**
+     * If upgrade dialog is not present, UiAnimator will shutdown
+     * So it works for upgrade case, but not work for normal case
+     * Need further tuning
+     */
     private void skipUpgradeIfPresent() {
         WebElement el = null;
 

@@ -33,7 +33,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123456");
+                (PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -65,7 +65,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charlie");
+                (USER_ID);
 
         //不输入密码
         //点击登录
@@ -97,7 +97,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charlie");
+                (USER_ID);
 
         //输入错误密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -106,7 +106,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123457");
+                (PASSWORD_WRONG);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -137,7 +137,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charles");
+                (USER_ID_WRONG);
 
         //输入正确密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -146,7 +146,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123456");
+                (PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -178,7 +178,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charlie");
+                (USER_ID);
 
         //输入正确密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -187,7 +187,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123456");
+                (PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -220,7 +220,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charliehan@chinamobile.com");
+                (EMAIL);
 
         //输入错误密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -229,7 +229,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("12345");
+                (PASSWORD_MAL_FORMED);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -261,7 +261,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charlie#chinamobile.com");
+                (EMAIL_MAL_FORMED);
 
         //输入正确密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -270,7 +270,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123456");
+                (PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -302,7 +302,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charliehan@gmail.com");
+                (EMAIL_UNREGISTERED);
 
         //输入正确密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -311,7 +311,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123456");
+                (PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -342,7 +342,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
-                ("charliehan@chinamobile.com");
+                (EMAIL);
 
         //输入正确密码
         find("//android.widget.LinearLayout[1]/android" +
@@ -351,7 +351,7 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[2]/android.widget.EditText[1]").sendKeys
-                ("123456");
+                (PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -360,7 +360,6 @@ public class LoginByIdOrEmailTest extends BasicTest {
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.LinearLayout[1]/android.widget.TextView[1]").click();
 
-        // Need ask Jammy's help to bind email first
         //assertNotNull(findByName("用户名"));
 
     }

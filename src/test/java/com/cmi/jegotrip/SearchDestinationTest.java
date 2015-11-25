@@ -1,7 +1,11 @@
 package com.cmi.jegotrip;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -29,16 +33,15 @@ public class SearchDestinationTest extends BasicTest {
         findByName("无忧助手").click();
 
         //点击目的地搜索框
-        find("//android.widget.LinearLayout[1]/android" +
+        find("//android.widget.LinearLayout[1]/android.widget" +
+                ".FrameLayout[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
-                ".widget.LinearLayout[1]/android.widget" +
-                ".FrameLayout[1]/android.widget.FrameLayout[1]/android.widget" +
-                ".FrameLayout[1]/android.widget.FrameLayout[1]/android.widget" +
+                ".widget.FrameLayout[1]/android.widget.FrameLayout[1]/android" +
+                ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.RelativeLayout[1]/android.widget" +
-                ".RelativeLayout[1]/android.widget.TextView[1]").click();
+                ".widget.RelativeLayout[1]/android.widget.RelativeLayout[1]").click();
 
         //Now do the check-ups
         //搜索框
@@ -87,16 +90,15 @@ public class SearchDestinationTest extends BasicTest {
     private void searchHongKong() {
 
         //点击目的地搜索框
-        find("//android.widget.LinearLayout[1]/android" +
+        find("//android.widget.LinearLayout[1]/android.widget" +
+                ".FrameLayout[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
-                ".widget.LinearLayout[1]/android.widget" +
-                ".FrameLayout[1]/android.widget.FrameLayout[1]/android.widget" +
-                ".FrameLayout[1]/android.widget.FrameLayout[1]/android.widget" +
+                ".widget.FrameLayout[1]/android.widget.FrameLayout[1]/android" +
+                ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.RelativeLayout[1]/android.widget" +
-                ".RelativeLayout[1]/android.widget.TextView[1]").click();
+                ".widget.RelativeLayout[1]/android.widget.RelativeLayout[1]").click();
 
         //点击搜索框，输入搜索内容
         find("//android.widget.LinearLayout[1]/android" +
@@ -114,12 +116,6 @@ public class SearchDestinationTest extends BasicTest {
                 ".FrameLayout[1]/android.widget.ListView[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.LinearLayout[1]").click();
 
-        /*wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android" +
-                ".widget.FrameLayout[1]/android.widget" +
-                ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
-                ".widget.LinearLayout[1]/android.widget" +
-                ".FrameLayout[1]/android.widget.ListView[1]/android.widget" +
-                ".LinearLayout[1]/android.widget.LinearLayout[1]")).click();*/
     }
 
     /**
@@ -160,6 +156,10 @@ public class SearchDestinationTest extends BasicTest {
         assertNotNull(findByName("拨打其他国家地区"));
         assertNotNull(findByName("发短信至中国大陆"));
         assertNotNull(findByName("发短信至其他国家地区"));
+
+        //Scroll a little bit, so the items at the bottom of the screen
+        //will be visible
+        wd.scrollTo("当地收短信");
         assertNotNull(findByName("当地收短信"));
     }
 
@@ -173,6 +173,7 @@ public class SearchDestinationTest extends BasicTest {
      * precondition:
      * 应用已登录
      */
+
     @Test
     public void testSearchDestinationFour() throws Exception {
 

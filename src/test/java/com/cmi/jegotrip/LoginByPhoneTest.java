@@ -57,7 +57,7 @@ public class LoginByPhoneTest extends BasicTest {
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.EditText[1]").sendKeys("123456");
+                ".widget.EditText[1]").sendKeys(PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -85,7 +85,7 @@ public class LoginByPhoneTest extends BasicTest {
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.RelativeLayout[2]/android.widget.EditText[1]")
-                .sendKeys("18801496855");
+                .sendKeys(PHONE_NUMBER);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -110,20 +110,20 @@ public class LoginByPhoneTest extends BasicTest {
         //输入正确国家码
         // Fixed. Not an option for now
 
-        //输入错误格式手机号
+        //输入错误格式手机号, e.g. "188014968tt"
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.RelativeLayout[2]/android.widget.EditText[1]")
-                .sendKeys("188014968tt");
+                .sendKeys(PHONE_NUMBER_MAL_FORMED);
 
         //输入密码
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.EditText[1]").sendKeys("123456");
+                ".widget.EditText[1]").sendKeys(PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -149,20 +149,20 @@ public class LoginByPhoneTest extends BasicTest {
         //输入正确国家码
         // Fixed. Not an option for now
 
-        //输入未注册手机号
+        //输入未注册手机号,e.g. "13705715745"
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.RelativeLayout[2]/android.widget.EditText[1]")
-                .sendKeys("13705715745");
+                .sendKeys(PHONE_NUMBER_UNREGISTERED);
 
         //输入密码
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.EditText[1]").sendKeys("123456");
+                ".widget.EditText[1]").sendKeys(PASSWORD);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +
@@ -194,14 +194,14 @@ public class LoginByPhoneTest extends BasicTest {
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
                 ".widget.RelativeLayout[2]/android.widget.EditText[1]")
-                .sendKeys("18801496855");
+                .sendKeys(PHONE_NUMBER);
 
-        //输入错误密码
+        //输入错误密码, e.g."12345"
         find("//android.widget.LinearLayout[1]/android" +
                 ".widget.FrameLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.FrameLayout[1]/android" +
                 ".widget.ScrollView[1]/android.widget.LinearLayout[1]/android" +
-                ".widget.EditText[1]").sendKeys("12345");
+                ".widget.EditText[1]").sendKeys(PASSWORD_MAL_FORMED);
 
         //点击登录
         find("//android.widget.LinearLayout[1]/android" +

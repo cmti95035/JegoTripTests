@@ -1,6 +1,7 @@
 package com.cmi.jegotrip;
 
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 
 /*
  * Test user registration
@@ -16,11 +17,7 @@ public class UserRegisterTest extends BasicTest {
     @Test
     public void testUserRegistrationOne() throws Exception {
 
-        //click “我的” tab in the main screen
-        findByName("我的").click();
-
-        //click "去注册"
-        findByName("去注册").click();
+        goRegistration();
 
         //输入正确手机号码
         find("//android.widget.LinearLayout[1]/android" +
@@ -55,11 +52,7 @@ public class UserRegisterTest extends BasicTest {
     @Test
     public void testUserRegistrationTwo() throws Exception {
 
-        //click “我的” tab in the main screen
-        findByName("我的").click();
-
-        //click "去注册"
-        findByName("去注册").click();
+        goRegistration();
 
         //输入正确手机号码
         find("//android.widget.LinearLayout[1]/android" +
@@ -91,6 +84,30 @@ public class UserRegisterTest extends BasicTest {
                 ".widget.LinearLayout[1]/android.widget" +
                 ".LinearLayout[1]/android.widget.TextView[1]").click();
 
+    }
+
+    //点击去注册，并输入邀请码
+    private void goRegistration() {
+        //click “我的” tab in the main screen
+        findByName("我的").click();
+
+        //click "去注册"
+        findByName("去注册").click();
+
+        //输入邀请码
+        find("//android.widget.LinearLayout[1]/android.widget" +
+                ".FrameLayout[1]/android.widget.LinearLayout[1]/android" +
+                ".widget.FrameLayout[1]/android.widget.ScrollView[1]/android" +
+                ".widget.LinearLayout[1]/android.widget" +
+                ".LinearLayout[1]/android.widget.EditText[1]").sendKeys
+                (REGISTER_CODE);
+
+        // soft keyboard sometimes presents and covers the "立即体验" button,
+        // sometimes not
+        hideKeyboard("goRegistration");
+
+        //click "立即体验"
+        findByName("立即体验").click();
     }
 
 }
